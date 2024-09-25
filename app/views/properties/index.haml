@@ -1,0 +1,10 @@
+%h1='Bienvenido a Datadrop'
+.container.d-flex.gap-4
+  - @properties.each do |property|
+    .card{style: "width: 18rem;"}
+      %img.card-img-top{ src: property.photo.url }
+      .card-body
+        %h5.card-title= property.property_type
+        %p.card-text= property.price
+        %p.card-text= property.commune
+        = link_to "Ver más", property, class: "btn btn-primary"

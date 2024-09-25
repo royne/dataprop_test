@@ -23,5 +23,7 @@ module PruebaDataprop
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.active_storage.url_options = { host: 'http://localhost:3000' }
   end
 end
