@@ -36,7 +36,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'haml-rails'
-gem 'bootstrap', '~> 5.1.3'
+gem 'bootstrap', '~> 5.3.3'
 gem 'leaflet-rails'
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap-style'
