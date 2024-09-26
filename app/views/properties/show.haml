@@ -1,0 +1,17 @@
+.d-flex.mx-auto
+  .container{style: 'width: 45%;'}
+    .card
+      %img.card-img-top{ src: @property.photo.url }
+      %h3.card-title= @property.description
+      .card-body
+        %h5.card-title= "Tipo de propiedad: #{@property.property_type}"
+        %p.card-text= "Precio: #{@property.price}" 
+        %p.card-text= "Comuna: #{@property.commune}" 
+        %p.card-text= "Area: #{@property.area}" 
+        %p.card-text= "Habitaciones: #{@property.bedrooms}"
+        %p.card-text= "Baños: #{@property.bathrooms}"
+        = link_to "Editar", edit_property_path(@property), class: "btn btn-primary"
+
+  .container{style: 'width: 45%;'}
+    = 'Aca va el mapa'
+    = 'Aca va la moneda'
