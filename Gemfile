@@ -38,7 +38,7 @@ gem "bootsnap", require: false
 gem 'haml-rails'
 gem 'bootstrap', '~> 5.1.3'
 gem 'leaflet-rails'
-gem 'will_paginate', '~> 3.3'
+gem 'will_paginate', '~> 4.0'
 gem 'will_paginate-bootstrap-style'
 gem 'ransack'
 
