@@ -2,12 +2,12 @@ class Property < ApplicationRecord
   include DescriptionValidation
 
   enum property_type: {
-    rent: 'rent',
-    sale: 'sale'
+    rent: "rent",
+    sale: "sale"
   }
   enum currency: {
-    usd: 'USD',
-    clp: 'CLP'
+    usd: "USD",
+    clp: "CLP"
   }
 
   validates :price, numericality: { greater_than: 0 }
@@ -21,5 +21,9 @@ class Property < ApplicationRecord
 
   def at_least_one_photo
     errors.add(:photo, "must have at least one attached photo") if photo.blank?
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[commune currency property_type]
   end
 end

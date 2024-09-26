@@ -1,0 +1,16 @@
+= search_form_for @q, url: properties_path, method: :get, html: { class: 'w-100' } do |f|
+  .row.g-4.mb-4.justify-content-center.align-items-center
+    .col.mb-1
+      = f.label :property_type_eq, "Property Type", class: 'form-label'
+      = f.select :property_type_eq, options_for_select([['Venta', 'sale'], ['Arriendo', 'rent']], params.dig(:q, :property_type_eq)), { include_blank: true }, { class: 'form-select' }
+
+    .col.mb-1
+      = f.label :currency_eq, "Currency", class: 'form-label'
+      = f.select :currency_eq, options_for_select([['CLP', 'clp'], ['USD', 'usd']], params.dig(:q, :currency_eq)), { include_blank: true }, { class: 'form-select' }
+
+    .col.mb-1
+      = f.label :commune_cont, "Commune", class: 'form-label'
+      = f.text_field :commune_cont, value: params.dig(:q, :commune_cont), class: 'form-control'
+
+    .col
+      = f.submit 'Buscar', class: 'btn btn-primary mt-4'

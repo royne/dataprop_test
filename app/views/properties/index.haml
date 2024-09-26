@@ -1,5 +1,7 @@
 %h1='Bienvenido a Datadrop'
 .container.d-flex.gap-4
+  =render partial: 'search', locals: { q: @q }
+.container.d-flex.gap-4
   - @properties.each do |property|
     .card{style: "width: 18rem;"}
       %img.card-img-top{ src: property.photo.url }
