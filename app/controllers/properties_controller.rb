@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update]
-  before_action :set_property, only: %i[edit update]
+  before_action :set_property, only: %i[edit update destroy]
   before_action :authorize_user!, only: %i[edit update]
 
   def index
@@ -19,7 +19,7 @@ class PropertiesController < ApplicationController
   def create
     @property = current_user.properties.new(property_params)
     if @property.save
-      redirect_to @property, notice: "Property created."
+      redirect_to @property, notice: "Property created"
     else
       render :new
     end
@@ -30,9 +30,18 @@ class PropertiesController < ApplicationController
 
   def update
     if @property.update(property_params)
-      redirect_to @property, notice: "Property updated."
+      redirect_to @property, notice: "Property updated"
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @property.user == current_user
+      @property.destroy
+      redirect_to properties_path, notice: "Property deleted"
+    else
+      redirect_to properties_path, alert: "not authorized"
     end
   end
 

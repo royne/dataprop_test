@@ -19,10 +19,6 @@ class Property < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
 
-  def at_least_one_photo
-    errors.add(:photo, "must have at least one attached photo") if photo.blank?
-  end
-
   def self.ransackable_attributes(auth_object = nil)
     %w[commune currency property_type]
   end

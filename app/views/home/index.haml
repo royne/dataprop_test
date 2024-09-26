@@ -1,9 +1,33 @@
-%h1='Bienvenido al portal de prueba de Dataprop'
-%h1{ class: "text-primary" } Título de Bootstrap
-%button{ class: "btn btn-primary" } Botón de Bootstrap
-%h1{ class: "text-primary" } dos de Bootstrap
-%h1{ class: "text-secondary" } tres de Bootstrap
-%div{ class: "container" }
-  %div{ class: "row" }
-    %div{class: "card"}
-      %p='royne'
+%h1='Bienvenido a tu Dashboard de Dataprop'
+.container
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th Property Type
+        %th Price
+        %th Currency
+        %th Commune
+        %th Address
+        %th Area (m²)
+        %th Bedrooms
+        %th Bathrooms
+        %th Latitude
+        %th Longitude
+        %th Actions
+    %tbody
+      - @properties.each do |property|
+        %tr
+          %td= property.property_type
+          %td= property.price
+          %td= property.currency
+          %td= property.commune
+          %td= property.address
+          %td= property.area
+          %td= property.bedrooms
+          %td= property.bathrooms
+          %td= property.latitude
+          %td= property.longitude
+          %td
+            = link_to 'Show', property_path(property), class: 'btn btn-sm btn-primary'
+            = link_to 'Edit', edit_property_path(property), class: 'btn btn-sm btn-warning'
+            = link_to 'Delete', property_path(property), method: :delete, data: { confirm: 'estas seguro?' }, class: 'btn btn-sm btn-danger'

@@ -3,9 +3,14 @@ module DescriptionValidation
 
   included do
     validate :description_cannot_contain_contact_info
+    validate :at_least_one_photo
   end
 
   private
+
+  def at_least_one_photo
+    errors.add(:photo, "must have at least one attached photo") if photo.blank?
+  end
 
   def description_cannot_contain_contact_info
     if description.present? && contains_contact_info?(description)
