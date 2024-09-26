@@ -1,0 +1,41 @@
+= form_with(model: property, local: true, html: { multipart: true }) do |f|
+  .mb-3
+    = f.label :property_type, class: "form-label"
+    %select.form-select{ name: 'property_type' }
+      = options_for_select([['Venta', 'sale'], ['arriendo', 'rent']], property.property_type) 
+  .mb-3
+    = f.label :price, class: "form-label"
+    = f.number_field :price, class: "form-control"
+  .mb-3
+    = f.label :currency, class: "form-label"
+    %select.form-select{ name: 'currency' }
+      = options_for_select([['CLP', 'clp'], ['USD', 'usd']], property.currency) 
+  .mb-3
+    = f.label :commune, class: "form-label"
+    = f.text_field :commune, class: "form-control"
+  .mb-3
+    = f.label :address, class: "form-label"
+    = f.text_field :address, class: "form-control"
+  .mb-3
+    = f.label :area, class: "form-label"
+    = f.number_field :area, class: "form-control"
+  .mb-3
+    = f.label :bedrooms, class: "form-label"
+    = f.number_field :bedrooms, class: "form-control"
+  .mb-3
+    = f.label :bathrooms, class: "form-label"
+    = f.number_field :bathrooms, class: "form-control"
+  .mb-3
+    = f.label :latitude, class: "form-label"
+    = f.number_field :latitude, step: "any", class: "form-control"
+  .mb-3
+    = f.label :longitude, class: "form-label"
+    = f.number_field :longitude, step: "any", class: "form-control"
+  .mb-3
+    = f.label :description, class: "form-label"
+    = f.text_area :description, class: "form-control"
+  .mb-3
+    = f.label :photo, class: "form-label"
+    = f.file_field :photo, class: "form-control"
+  .actions
+    = f.submit "Save Property", class: "btn btn-primary"

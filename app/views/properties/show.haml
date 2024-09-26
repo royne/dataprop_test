@@ -10,7 +10,8 @@
         %p.card-text= "Area: #{@property.area}" 
         %p.card-text= "Habitaciones: #{@property.bedrooms}"
         %p.card-text= "Baños: #{@property.bathrooms}"
-        = link_to "Editar", edit_property_path(@property), class: "btn btn-primary"
+        - if current_user == @property.user
+          = link_to "Editar", edit_property_path(@property), class: "btn btn-primary"
 
   .container{style: 'width: 45%;'}
     #map{data: { controller: 'maps' }, style: 'height: 400px;'}
