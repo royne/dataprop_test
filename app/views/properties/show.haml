@@ -1,7 +1,7 @@
 .d-flex.mx-auto
   .container{style: 'width: 45%;'}
     .card
-      %img.card-img-top{ src: @property.photo.url }
+      = image_tag @property.photo.url, class:'card-img-top' 
       %h3.card-title= @property.description
       .card-body
         %h5.card-title= "Tipo de propiedad: #{@property.property_type}"
@@ -13,5 +13,9 @@
         = link_to "Editar", edit_property_path(@property), class: "btn btn-primary"
 
   .container{style: 'width: 45%;'}
-    = 'Aca va el mapa'
+
+    #map{data: { controller: 'maps' }, style: 'height: 400px;'}
+      %input{ type: "hidden", value: @property.address, data: { maps_target: "address" } }
+      %input{ type: "hidden", value: @property.latitude, data: { maps_target: "latitude" } }
+      %input{ type: "hidden", value: @property.longitude, data: { maps_target: "longitude" } }
     = 'Aca va la moneda'
