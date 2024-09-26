@@ -5,17 +5,20 @@
       %h3.card-title= @property.description
       .card-body
         %h5.card-title= "Tipo de propiedad: #{@property.property_type}"
-        %p.card-text= "Precio: #{@property.price}" 
-        %p.card-text= "Comuna: #{@property.commune}" 
+        %p.card-text= "Precio: #{@property.price} #{@property.currency.upcase}"
+        %p.card-text= "Comuna: #{@property.commune}"
         %p.card-text= "Area: #{@property.area}" 
         %p.card-text= "Habitaciones: #{@property.bedrooms}"
         %p.card-text= "Baños: #{@property.bathrooms}"
         = link_to "Editar", edit_property_path(@property), class: "btn btn-primary"
 
   .container{style: 'width: 45%;'}
-
     #map{data: { controller: 'maps' }, style: 'height: 400px;'}
-      %input{ type: "hidden", value: @property.address, data: { maps_target: "address" } }
-      %input{ type: "hidden", value: @property.latitude, data: { maps_target: "latitude" } }
-      %input{ type: "hidden", value: @property.longitude, data: { maps_target: "longitude" } }
-    = 'Aca va la moneda'
+      %input{ type: "hidden", value: @property.address, data: { maps_target: 'address' } }
+      %input{ type: "hidden", value: @property.latitude, data: { maps_target: 'latitude' } }
+      %input{ type: "hidden", value: @property.longitude, data: { maps_target: 'longitude' } }
+    .div{data: { controller: 'currency' }}
+      %input{ type: "hidden", value: @property.price, data: { currency_target: 'price' } }
+      %input{ type: "hidden", value: @property.currency, data: { currency_target: 'currencyType' } }
+      %h4="Precio en #{@property.currency.upcase}: $#{@property.price}"
+      %h4{data: { currency_target: 'usdPrice' }}
