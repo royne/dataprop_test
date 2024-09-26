@@ -4,7 +4,7 @@ class PropertiesController < ApplicationController
   before_action :authorize_user!, only: %i[edit update]
 
   def index
-    @properties = Property.all
+    @properties = Property.paginate(page: params[:page], per_page: 2)
   end
 
   def show
