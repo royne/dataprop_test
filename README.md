@@ -1,24 +1,25 @@
 # README
+Previous steps
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  * install docker and docker-compose
 
-Things you may want to cover:
+Steps for installation
 
-* Ruby version
+  * sudo docker-compose build
+  * sudo docker-compose run web bundle exec rails db:create
+  * sudo docker-compose run web bundle exec rails db:migrate
+  * sudo docker-compose run web bundle exec rails db:seed
 
-* System dependencies
+Run project
 
-* Configuration
+  * sudo docker-compose up
 
-* Database creation
+Stop containers
 
-* Database initialization
+  * sudo docker-compose down 
 
-* How to run the test suite
+to enter the container
 
-* Services (job queues, cache servers, search engines, etc.)
+  * sudo docker-compose run web bash
 
-* Deployment instructions
 
-* ...
